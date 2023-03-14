@@ -14,7 +14,7 @@ COPY	./conf/index.html /var/www/html/
 
 RUN	mkdir -p /run/nginx
 
-EXPOSE	433
+EXPOSE	443
 
 CMD	["nginx", "-g", "daemon off;"]
 

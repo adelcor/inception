@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  nginx:
+    container_name: nginx
+    build: ./req/nginx
+    image: nginx
+    restart: always
+    ports:
+      - 443:443
+
+  mariadb:
+    container_name: mariadb
+    build:          ./req/mariadb
+    image:          mariadb
+    restart: always
+    env_file:
+      - .env
+
+          
+
