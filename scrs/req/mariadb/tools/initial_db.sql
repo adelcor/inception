@@ -1,6 +1,6 @@
 CREATE DATABASE IF NOT EXISTS wordpress;
-CREATE USER IF NOT EXISTS 'crendeha'@'%' IDENTIFIED BY '12345';
-GRANT ALL PRIVILEGES ON wordpress.* TO 'crendeha'@'%';
+CREATE USER IF NOT EXISTS 'adel-cor'@'%' IDENTIFIED BY 'new1234';
+GRANT ALL PRIVILEGES ON wordpress.* TO 'adel-cor'@'%';
 FLUSH PRIVILEGES;
-ALTER USER 'root'@'localhost' IDENTIFIED BY 'root12345';
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'root4life';
 

@@ -8,6 +8,8 @@ services:
     restart: always
     ports:
       - 443:443
+    volumes:
+      - wordpress:/var/www/html
 
   mariadb:
     container_name: mariadb
@@ -16,6 +18,28 @@ services:
     restart: always
     env_file:
       - .env
+    volumes:
+      -  mariadb:/var/lib/mysql
+
+    
+volumes:
+  mariadb:
+    name: mariadb_volume
+    driver: local
+    driver_opts:
+      type: volume
+      device: /home/adel-cor/data/db/
+      o: bind
+          
+  wordpress:
+    name: wordpress_volume
+    driver: local
+    driver_opts:
+      type: volume
+      device: /home/adel-cor/data/wp/
+      o: bind
+          
+
 
           
 
