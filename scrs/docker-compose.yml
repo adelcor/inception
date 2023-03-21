@@ -10,6 +10,9 @@ services:
       - 443:443
     volumes:
       - wordpress:/var/www/html
+    restart: always
+    networks:
+      - network
 
   mariadb:
     container_name: mariadb
@@ -20,6 +23,24 @@ services:
       - .env
     volumes:
       -  mariadb:/var/lib/mysql
+    networks:
+      - network
+
+  wordpress:
+    container_name: wordpress
+    depends_on:
+      - mariadb
+    build:
+      context: ./req/wordpress
+      dockerfile: Dockerfile
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - wordpress:/var/www/html
+    networks:
+      - network
+
 
     
 volumes:
@@ -38,6 +59,9 @@ volumes:
       type: volume
       device: /home/adel-cor/data/wp/
       o: bind
+networks:
+  network:
+    driver: bridge
           
 
 
