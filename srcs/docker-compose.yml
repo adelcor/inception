@@ -25,14 +25,15 @@ services:
       -  mariadb:/var/lib/mysql
     networks:
       - network
+    expose:
+      - 3306
 
   wordpress:
     container_name: wordpress
+    image: wordpress
     depends_on:
       - mariadb
-    build:
-      context: ./req/wordpress
-      dockerfile: Dockerfile
+    build: ./req/wordpress
     restart: always
     env_file:
       - .env
@@ -40,12 +41,13 @@ services:
       - wordpress:/var/www/html
     networks:
       - network
+    expose:
+      - 9000
 
 
     
 volumes:
   mariadb:
-    name: mariadb_volume
     driver: local
     driver_opts:
       type: volume
@@ -53,7 +55,6 @@ volumes:
       o: bind
           
   wordpress:
-    name: wordpress_volume
     driver: local
     driver_opts:
       type: volume
