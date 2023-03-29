@@ -3,7 +3,7 @@ version: '3'
 services:
   nginx:
     container_name: nginx
-    build: ./req/nginx
+    build: ./requirements/nginx
     image: nginx
     restart: always
     ports:
@@ -16,7 +16,7 @@ services:
 
   mariadb:
     container_name: mariadb
-    build:          ./req/mariadb
+    build:          ./requirements/mariadb
     image:          mariadb
     restart: always
     env_file:
@@ -33,7 +33,7 @@ services:
     image: wordpress
     depends_on:
       - mariadb
-    build: ./req/wordpress
+    build: ./requirements/wordpress
     restart: always
     env_file:
       - .env
